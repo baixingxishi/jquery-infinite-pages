@@ -88,19 +88,22 @@ Released under the MIT License
       @options.state.loading = true
       @_log "Loading next page..."
       if typeof @options.loading is 'function'
-        @$container.find(@options.navSelector).each(@options.loading)
+        @options.loading()
+        #@$container.find(@options.navSelector).each(@options.loading)
 
     _success: ->
       @options.state.loading = false
       @_log "New page loaded!"
       if typeof @options.success is 'function'
-        @$container.find(@options.navSelector).each(@options.success)
+        @options.success()
+        #@$container.find(@options.navSelector).each(@options.success)
 
     _error: ->
       @options.state.loading = false
       @_log "Error loading new page :("
       if typeof @options.error is 'function'
-        @$container.find(@options.navSelector).each(@options.error)
+        @options.error()
+        #@$container.find(@options.navSelector).each(@options.error)
 
     # Pause firing of events on scroll
     pause: ->
